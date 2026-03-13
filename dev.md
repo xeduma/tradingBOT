@@ -104,3 +104,47 @@ docker compose down
 Ctrl+C
 # Le moteur ferme toutes les positions avant de s'arrêter
 ```
+
+
+
+### configuration grafana
+http://localhost:3000
+```
+admin + mdp
+menu gauche > connexion > data sources
+add > prometheus
+http://prometheus:9000
+save & test >     succesfully queried ?
+```
+Créer le fichier de provisioning automatique :
+```bash
+mkdir -p monitoring/grafana/provisioning/datasources
+mkdir -p monitoring/grafana/provisioning/dashboards
+
+cat > monitoring/grafana/provisioning/datasources/prometheus.yml << 'EOF'
+apiVersion: 1
+datasources:
+  - name: Prometheus
+    type: prometheus
+    url: http://prometheus:9090
+    isDefault: true
+    editable: true
+EOF
+```
+Vérifier que Prometheus reçoit les métriques du moteur :
+```bash
+http://localhost:9090/targets
+# apex-trading doit être en vert "UP"
+
+si c'est down : 
+# Vérifier que le moteur expose bien ses métriques
+curl http://localhost:8000/metrics | grep apex_
+```
+Importer un dashboard prêt à l'emploi :
+```bash
+Menu gauche → Dashboards → Import
+Coller l'ID **1860** (Node Exporter Full, très populaire)
+u coller **3662** pour un dashboard Prometheus générique
+Sélectionner la datasource Prometheus > import 
+```
+http://localhost:9090/targets

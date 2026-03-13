@@ -4,3 +4,6 @@ binance kraken
 
 ## objectif
 avoir +20% avec une stratégie de trading
+
+
+- [configuration dev](dev.md)

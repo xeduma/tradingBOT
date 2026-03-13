@@ -13,4 +13,8 @@ cd ...
 source .....
 docker-compose up -d
 ```
-s
+http://localhost:3000
+### logs
+```bash
+docker-compose logs -f trading-engine
+```

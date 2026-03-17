@@ -1,0 +1,19 @@
+# ── Core ──────────────────────────────────────────────────────────────────────
+ccxt[async]>=4.3.0          # Binance + Kraken WebSocket / REST
+asyncpg>=0.29.0             # PostgreSQL async (TimescaleDB)
+numpy>=1.26.0               # Calculs indicateurs rapides
+pandas>=2.2.0               # Manipulation des séries temporelles
+httpx>=0.27.0               # Client HTTP async (Mistral API, Telegram)
+
+# ── Monitoring ────────────────────────────────────────────────────────────────
+prometheus-client>=0.20.0   # Métriques Prometheus (Grafana)
+
+# ── Backtesting (facultatif) ──────────────────────────────────────────────────
+vectorbt>=0.26.0            # Backtesting vectorisé haute performance
+plotly>=5.22.0              # Graphiques interactifs (rapports backtest)
+kaleido>=0.2.1              # Export PNG des graphiques Plotly
+
+# ── Utilitaires ───────────────────────────────────────────────────────────────
+python-dotenv>=1.0.0        # Chargement des variables d'environnement (.env)
+ujson>=5.9.0                # JSON rapide pour les flux WebSocket
+aiofiles>=23.2.1            # I/O fichiers asynchrone
